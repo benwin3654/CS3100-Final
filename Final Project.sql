@@ -1,6 +1,9 @@
+UNLOCK TABLES;
 DROP SCHEMA IF EXISTS ItSupply;
 CREATE SCHEMA ItSupply;
 USE ItSupply;
+
+DROP TABLE IF EXISTS employees;
 
 CREATE TABLE employees(
 	employeeID INT(4),
@@ -17,3 +20,17 @@ CREATE TABLE employees(
 );
 
 SELECT * FROM ItSupply.employees;
+
+LOCK TABLES employees WRITE;
+
+INSERT INTO employees(firstName,lastName) # Column names in parentheses
+VALUES
+('John','Doe')
+;
+
+UNLOCK TABLES;
+
+
+# for foreign keys: 
+# KEY employeeID(employeeID),
+# CONSTRAINT employeesID1234 FOREIGN KEY (territoryID) REFERENCES territory(territoryID)
