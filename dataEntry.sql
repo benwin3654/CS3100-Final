@@ -160,7 +160,7 @@ INSERT INTO orders
     VALUES('1009', '1003', '2024-11-28', '1091', '1006', 
     '2024-12-28', '2024-12-12', '1006'); 
 
--- SHIPPING METHODS DATA ENTRY
+-- ORDER DETAILS DATA ENTRY
 
 INSERT INTO orderDetails
 	(orderID, partID, quantity, discount)
