@@ -158,4 +158,90 @@ INSERT INTO orders
 	(orderID, customerID, orderDate, contactID, employeeID, 
     paymentDueDate, projectedDeliveryDate, methodID)
     VALUES('1009', '1003', '2024-11-28', '1091', '1006', 
-    '2024-12-28', '2024-12-12', '1006');
+    '2024-12-28', '2024-12-12', '1006'); 
+
+-- SHIPPING METHODS DATA ENTRY
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1001','112','7');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1001', '221', '1');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1001','339','12');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1002', '222', '5');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1003', '443', '5');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1003', '445', '12');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1003', '107', '50');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1004', '221', '2');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1004', '222', '5');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1004', '337', '1');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1004', '338', '3');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1005', '112', '501');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1005', '113', '125');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1006', '443', '23');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1006', '337', '4');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1006', '107', '44000', '0.1');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1007', '221', '12');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1008', '443', '10');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1008', '445', '5');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1009', '112', '50');
+
+INSERT INTO orderDetails
+	(orderID, partID, quantity, discount)
+    VALUES('1009', '113', '150');
