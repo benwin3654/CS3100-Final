@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS products;
 
 CREATE TABLE products(
 	`partID` INT(3),
-    `productName` VARCHAR(100),
+    `productDescription` VARCHAR(100),
     `priceEach` INT,
     PRIMARY KEY(`partID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -91,8 +91,8 @@ CREATE TABLE orders(
     `orderDate` VARCHAR(30),
     `contactID` INT(4),
     `employeeID` INT(4),
-    `paymentDueDate` VARCHAR(30),
-    `projectedDeliveryDate` VARCHAR(30),
+    `paymentDueDate` DATE, -- Changed this to DATE form VARCHAR (30)
+    `projectedDeliveryDate` DATE,
     `methodID` INT(4),
     PRIMARY KEY(`orderID`),
     CONSTRAINT `customerID1235` FOREIGN KEY(`customerID`) REFERENCES `customers`(`customerID`),
