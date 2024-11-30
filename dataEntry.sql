@@ -1,4 +1,4 @@
--- ALL EMPLOYEES ENTERED		
+-- ALL EMPLOYEES ENTERED ********	
 INSERT INTO employees
 	(employeeID, firstName, lastName, 
     gender, title, streetAddress, 
@@ -62,7 +62,7 @@ INSERT INTO employees
     '1651 Naismith Drive', 'Lawrence', 'KS', '66044',
     '9130123344', '1001');
 
--- PRODUCTS DATA ENTRY
+-- PRODUCTS DATA ENTRY*******
 
 INSERT INTO products
 	(partID, productDescription, priceEach)
@@ -104,7 +104,7 @@ INSERT INTO products
 	(partID, productDescription, priceEach)
     VALUES('1007', 'User Tolerance Assistance', '3.14');
 
--- ORDERS DATA ENTRY
+-- ORDERS DATA ENTRY********
 
 INSERT INTO orders
 	(orderID, customerID, orderDate, contactID, employeeID, 
@@ -160,7 +160,7 @@ INSERT INTO orders
     VALUES('1009', '1003', '2024-11-28', '1091', '1006', 
     '2024-12-28', '2024-12-12', '1006'); 
 
--- ORDER DETAILS DATA ENTRY
+-- ORDER DETAILS DATA ENTRY**********
 
 INSERT INTO orderDetails
 	(orderID, partID, quantity, discount)
@@ -245,3 +245,83 @@ INSERT INTO orderDetails
 INSERT INTO orderDetails
 	(orderID, partID, quantity, discount)
     VALUES('1009', '113', '150');
+
+-- CONTACTS DATA ENTRY*******
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1001', 'Patricia', 'Smith', '1122', 
+    '111 Santa Anna Valley Road', 'Sacramento', 'CA', '94203', '9161014443', '1');
+    
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1002', 'Michael', 'Williams', '1122', 
+    '1066 Gayley Ave', 'Los Angeles', 'CA', '90024', '2131108590', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1003', 'Michael', 'Jones', '1122',
+    '5101 York Blvd', 'Los Angeles', 'CA', '90042', '2131110003', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1004', 'John', 'Wilson', '1122', 
+    '5101 York Blvd', 'Los Angeles', 'CA', '90042', '2131110003', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1031', 'Mary', 'Parsons', '3724', 
+    '775 Normal Lane', 'Relational', 'KS', '66110', '9139998877', '1');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1032', 'Larry', 'DBA', '3724', 
+    '237 Boyce Avenue', 'Codd', 'KS', '67444', '9137870000', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1033', 'Thomas', 'Taylor', '3724',
+    '738 SW Gage Blvd', 'Topeka', 'KS', '66606', '9131988567', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1034', 'Linda', 'Wilson', '3724',
+    '4745 NW Hunters Ridge Cir', 'Topeka', 'KS', '66618', '9131012409', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1035', 'Richard', 'Garcia', '3724', 
+    '16563 W 151st St', 'Oleathe', 'KS', '66206', '9131592910', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1036', 'Joseph', 'Martin', '3724',
+    '7732 E Central Ave', 'Whichita', 'KS', '67206', '9131386984', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1037', 'Joseph', 'Thomas', '3724', 
+    '7002 Johnson Dr', 'Mission', 'KS', '66202', '9131812280', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1038', 'Daniel', 'Lee', '3724', '9474',
+    '9474 Renner Blvd', 'Lanexa', 'KS', '6619', '9131755459', '0');
+
+INSERT INTO contacts
+	(contactID, contactFirstName, contactLastName, customerID,
+    address, city, zipCode, phoneNumber, isBilling)
+    VALUES('1039', 'Jennifer', 'Taylor', '3724',
+    '150 Central Mall', 'Salina', 'KS', '57401', '9131132430', '0');
