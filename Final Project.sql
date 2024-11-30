@@ -80,7 +80,7 @@ CREATE TABLE products(
 CREATE TABLE shippingMethods(
 	`methodID` INT(4),
     `carrier` VARCHAR(15),
-    `description` VARCHAR(50),
+    `shippingDesc` VARCHAR(50), -- Changed from description
     `price` INT,
     PRIMARY KEY(`methodID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
