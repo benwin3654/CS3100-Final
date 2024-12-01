@@ -325,3 +325,296 @@ INSERT INTO contacts
     address, city, zipCode, phoneNumber, isBilling)
     VALUES('1039', 'Jennifer', 'Taylor', '3724',
     '150 Central Mall', 'Salina', 'KS', '57401', '9131132430', '0');
+
+-- CUSTOMERS DATA ENTRY
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1122', 'Bill & Teds PC Repair');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1375', 'Hestons 10 Commands');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1376', 'Kelsons Northtown');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1835', 'PC Loco');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('3724', 'Databases R Us');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('2298', 'Pyramid PC');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('2376', 'Big Freds Mac Emporium');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1876', 'Macs Welcome Here');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('2374', 'PC Master Race');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1313','Pulcinella PC');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1214','Abos workshop');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1275','Cosmic Computer');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1012','AvantisCommodore');    
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1728','Gullivers traveling techs');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1818','Bits & Bytes');    
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1276','Alma PC connection');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1317','Shotgun Shack Mac');
+    INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1456','US PC');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1568','Walton Computers');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1513','Algiers applications');
+    INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1001','Brickhouse Computers');
+
+INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1002','Hometown Help');
+    INSERT INTO customers
+	(customerID, customerName)
+    VALUES('1003','Michaels Dell Emporium');
+    
+-- REGION DATA ENTRY
+
+INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001', 'AL');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','AK');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','AZ');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','CT');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','DE');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','FL');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','GA');
+
+INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','HI');
+
+INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','ID');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','KY');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','LA');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','ME');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','MD');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','MA');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','MI');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','MS');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','MT');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','NV');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','NH');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','NJ');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','NY');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','NC');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','ND');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','OR');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','PA');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','RI');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','SC');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','SD');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','UT');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','VT');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','VA');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','WA');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','WV');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1001','WY');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1002','CO');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1002','NM');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1002','TX');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1003','CA');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1004','IL');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1004','OH');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1004','IN');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1005','AR');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1005','OK');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1005','TN');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1006','IA');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1006','WI');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1006','MN');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1007','MO');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1007','KS');
+    
+    INSERT INTO regions
+	(employeeID, state)
+	VALUES('1007','NE');
