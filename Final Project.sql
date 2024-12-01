@@ -53,7 +53,7 @@ CREATE TABLE contacts(
     `state` VARCHAR(15),
     `zipCode` VARCHAR(10),
     `phoneNumber` VARCHAR(15),
-    `isDefault` BOOLEAN,
+    `isBilling` BOOLEAN,
     PRIMARY KEY(`contactID`),
     KEY `customerID`(`customerID`),
     CONSTRAINT `customerID1234` FOREIGN KEY(`customerID`) REFERENCES `customers`(`customerID`)
@@ -67,6 +67,15 @@ CREATE TABLE region(
     KEY `employeeID`(`employeeID`),
     CONSTRAINT `employeeID1235` FOREIGN KEY(`employeeID`) REFERENCES `employees`(`employeeID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- I made this table to make sure the state is the primary key:
+CREATE TABLE regions(
+    `employeeID` INT(4) NOT NULL,
+    `state` VARCHAR(15) NOT NULL,
+    PRIMARY KEY (`state`), -- Make state the primary key
+    KEY `employeeID`(`employeeID`),
+    CONSTRAINT `employeeID1235` FOREIGN KEY(`employeeID`) REFERENCES `employees`(`employeeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS products;
 
