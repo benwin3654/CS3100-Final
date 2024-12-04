@@ -614,11 +614,11 @@ INSERT INTO orderDetails
 
 INSERT INTO orderDetails
 	(orderID, partID, quantity, shippingPrice)
-    VALUES('1009', '112', '50', '12.75');
+    VALUES('1009', '112', '50', '17.25');
 
 INSERT INTO orderDetails
 	(orderID, partID, quantity, shippingPrice)
-    VALUES('1009', '113', '150', '12.75');
+    VALUES('1009', '113', '150', '17.25');
     
     SELECT 
     o.orderID AS 'Order ID',  -- Selects the Order ID from the orders table
@@ -663,6 +663,36 @@ WHERE
     o.orderID = 1006  -- Filter the results to only include orderID 1006
 ORDER BY 
     od.partID;  -- Order the results by partID to group the items in each order (this can be adjusted depending on your needs)
+    
+    SELECT 
+    c.customerName AS 'Customer Name',
+    CONCAT(e.firstName, ' ', e.lastName) AS 'Salesperson',
+    o.orderID AS 'Order ID',
+    ROUND(
+        SUM(
+            CASE 
+                WHEN od.discount IS NOT NULL AND od.discount > 0 THEN 
+                    -- Apply discount for the item: multiply price by (1 - discount)
+                    (od.quantity * p.priceEach) * (1 - od.discount) 
+                ELSE 
+                    -- No discount, regular price
+                    (od.quantity * p.priceEach)
+            END
+        ) + ROUND(od.shippingPrice) -- Add rounded shipping price
+		-- Round final total to 2 decimal places
+    ) AS 'Order Total'
+FROM 
+    orders o
+JOIN 
+    customers c ON o.customerID = c.customerID
+JOIN 
+    employees e ON o.employeeID = e.employeeID
+JOIN 
+    orderDetails od ON o.orderID = od.orderID
+JOIN 
+    price p ON od.partID = p.partID
+GROUP BY 
+    c.customerName, e.firstName, e.lastName, o.orderID;
 
 
 # for foreign keys: 
