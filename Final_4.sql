@@ -92,7 +92,7 @@ CREATE TABLE orders(
     `employeeID` INT(4) NOT NULL,
     `paymentDueDate` DATE NOT NULL, -- Changed this to DATE form VARCHAR (30)
     `projectedDeliveryDate` DATE DEFAULT NULL,
-    `methodID` INT(4),
+    `methodID` INT(4) DEFAULT NULL,
     PRIMARY KEY(`orderID`),
     CONSTRAINT `customerID1235` FOREIGN KEY(`customerID`) REFERENCES `customers`(`customerID`),
     CONSTRAINT `contactID1334` FOREIGN KEY(`contactID`) REFERENCES `contacts`(`contactID`),
@@ -109,7 +109,7 @@ CREATE TABLE orderDetails(
     `partID` INT(3) NOT NULL,
     `quantity` INT NOT NULL,
     `shippingPrice` DECIMAL NOT NULL, #Used float instead of decimal because the price is a quote from the carriers
-    `discount` FLOAT DEFAULT NULL,
+    `discount` DECIMAL(5,2) NULL,
     `isDiscountApproved` ENUM('Pending','Approved','Denied') DEFAULT NULL,
     CONSTRAINT `orderID1001` FOREIGN KEY(`orderID`) REFERENCES `orders`(`orderID`),
 	CONSTRAINT `partID123` FOREIGN KEY(`partID`) REFERENCES `products`(`partID`)
@@ -119,7 +119,7 @@ DROP TABLE IF EXISTS price;
 #Creates the price table for historcial and current prices
 CREATE TABLE price(
 	`partID` INT(4) NOT NULL,
-	`priceEach` DECIMAL(5,2) NOT NULL,
+	`priceEach` DECIMAL NOT NULL,
     `fromDate` DATE NOT NULL,
     `toDate` DATE DEFAULT NULL,
     CONSTRAINT `partID122` FOREIGN KEY (`partID`) REFERENCES `products`(`partID`)
@@ -589,16 +589,16 @@ INSERT INTO orderDetails
     VALUES('1005', '113', '125', '12.25');
 
 INSERT INTO orderDetails
-	(orderID, partID, quantity, shippingPrice)
-    VALUES('1006', '443', '23', '0');
+	(orderID, partID, quantity)
+    VALUES('1006', '443', '23');
 
 INSERT INTO orderDetails
-	(orderID, partID, quantity, shippingPrice)
-    VALUES('1006', '337', '4', '0');
+	(orderID, partID, quantity)
+    VALUES('1006', '337', '4');
 
 INSERT INTO orderDetails
-	(orderID, partID, quantity, discount, shippingPrice, isDiscountApproved)
-    VALUES('1006', '1007', '44000', '0.1', '0', 'Approved');
+	(orderID, partID, quantity, discount)
+    VALUES('1006', '1007', '44000', '0.1');
 
 INSERT INTO orderDetails
 	(orderID, partID, quantity)
