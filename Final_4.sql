@@ -92,7 +92,7 @@ CREATE TABLE orders(
     `employeeID` INT(4) NOT NULL,
     `paymentDueDate` DATE NOT NULL, -- Changed this to DATE form VARCHAR (30)
     `projectedDeliveryDate` DATE DEFAULT NULL,
-    `methodID` INT(4) DEFAULT NULL,
+    `methodID` INT(4),
     PRIMARY KEY(`orderID`),
     CONSTRAINT `customerID1235` FOREIGN KEY(`customerID`) REFERENCES `customers`(`customerID`),
     CONSTRAINT `contactID1334` FOREIGN KEY(`contactID`) REFERENCES `contacts`(`contactID`),
@@ -109,7 +109,7 @@ CREATE TABLE orderDetails(
     `partID` INT(3) NOT NULL,
     `quantity` INT NOT NULL,
     `shippingPrice` DECIMAL NOT NULL, #Used float instead of decimal because the price is a quote from the carriers
-    `discount` DECIMAL(5,2) NULL,
+    `discount` FLOAT DEFAULT NULL,
     `isDiscountApproved` ENUM('Pending','Approved','Denied') DEFAULT NULL,
     CONSTRAINT `orderID1001` FOREIGN KEY(`orderID`) REFERENCES `orders`(`orderID`),
 	CONSTRAINT `partID123` FOREIGN KEY(`partID`) REFERENCES `products`(`partID`)
@@ -119,7 +119,7 @@ DROP TABLE IF EXISTS price;
 #Creates the price table for historcial and current prices
 CREATE TABLE price(
 	`partID` INT(4) NOT NULL,
-	`priceEach` DECIMAL NOT NULL,
+	`priceEach` DECIMAL(5,2) NOT NULL,
     `fromDate` DATE NOT NULL,
     `toDate` DATE DEFAULT NULL,
     CONSTRAINT `partID122` FOREIGN KEY (`partID`) REFERENCES `products`(`partID`)
@@ -589,16 +589,16 @@ INSERT INTO orderDetails
     VALUES('1005', '113', '125', '12.25');
 
 INSERT INTO orderDetails
-	(orderID, partID, quantity)
-    VALUES('1006', '443', '23');
+	(orderID, partID, quantity, shippingPrice)
+    VALUES('1006', '443', '23', '0');
 
 INSERT INTO orderDetails
-	(orderID, partID, quantity)
-    VALUES('1006', '337', '4');
+	(orderID, partID, quantity, shippingPrice)
+    VALUES('1006', '337', '4', '0');
 
 INSERT INTO orderDetails
-	(orderID, partID, quantity, discount)
-    VALUES('1006', '1007', '44000', '0.1');
+	(orderID, partID, quantity, discount, shippingPrice, isDiscountApproved)
+    VALUES('1006', '1007', '44000', '0.1', '0', 'Approved');
 
 INSERT INTO orderDetails
 	(orderID, partID, quantity)
@@ -619,6 +619,50 @@ INSERT INTO orderDetails
 INSERT INTO orderDetails
 	(orderID, partID, quantity, shippingPrice)
     VALUES('1009', '113', '150', '12.75');
+    
+    SELECT 
+    o.orderID AS 'Order ID',  -- Selects the Order ID from the orders table
+    c.customerName AS 'Bill To Customer',  -- Selects the customer name from the customers table
+    ct.address AS 'Bill To Address',  -- Selects the billing address from the contacts table
+    ct.phoneNumber AS 'Bill To Phone',  -- Selects the billing phone number from the contacts table
+    CONCAT(ct.contactFirstName, ' ', ct.contactLastName) AS 'Ship To Recipient',  -- Combines first and last name from contacts table to create 'Ship To Recipient'
+    ct.address AS 'Ship To Address',  -- Selects the shipping address from the contacts table (assuming it's the same as the billing address here)
+    ct.phoneNumber AS 'Ship To Phone',  -- Selects the shipping phone number from the contacts table (assuming it's the same as the billing phone number here)
+    o.paymentDueDate AS 'Payment Due',  -- Selects the payment due date from the orders table
+    e.firstName AS 'Salesperson First Name',  -- Selects the first name of the salesperson from the employees table
+    e.lastName AS 'Salesperson Last Name',  -- Selects the last name of the salesperson from the employees table
+    sm.carrier AS 'Shipping Method',  -- Selects the carrier (shipping method) from the shippingMethods table
+    sm.shippingDesc AS 'Shipping Description',  -- Selects the description of the shipping method from the shippingMethods table
+    od.quantity AS 'Qty',  -- Selects the quantity of items from the orderDetails table
+    p.productDescription AS 'Description',  -- Selects the product description from the products table
+    pr.priceEach AS 'Unit Price',  -- Selects the unit price for each product from the price table
+    od.discount AS 'Discount',  -- Selects the discount applied to each product from the orderDetails table
+    -- Calculate the line total: quantity * price each * (1 - discount)
+    -- If there's no discount, it uses the price without discount (assuming discount is stored as a percentage)
+    ROUND(od.quantity * pr.priceEach * (1 - COALESCE(od.discount, 0)), 2) AS 'Line Total', 
+    -- Calculate the total for the entire order: sum of all line totals for the order, rounded to 2 decimal places
+    -- The SUM function is used to aggregate the line totals across all items in the same order
+    ROUND(SUM(od.quantity * pr.priceEach * (1 - COALESCE(od.discount, 0))) OVER (PARTITION BY o.orderID), 2) AS 'Order Total'
+FROM 
+    orders o  
+LEFT JOIN 
+    customers c ON o.customerID = c.customerID  
+LEFT JOIN 
+    contacts ct ON o.contactID = ct.contactID  
+LEFT JOIN 
+    employees e ON o.employeeID = e.employeeID  
+LEFT JOIN 
+    shippingMethods sm ON o.methodID = sm.methodID  -- Left join with the shippingMethods table on methodID (to get shipping method details)
+LEFT JOIN 
+    orderDetails od ON o.orderID = od.orderID  -- Left join with the orderDetails table on orderID (to get item details for each order)
+LEFT JOIN 
+    products p ON od.partID = p.partID  -- Left join with the products table on partID (to get product descriptions)
+LEFT JOIN 
+    price pr ON p.partID = pr.partID AND o.orderDate BETWEEN pr.fromDate AND COALESCE(pr.toDate, CURRENT_DATE)  -- Left join with the price table on partID and a date range condition to get the price for the correct period
+WHERE 
+    o.orderID = 1006  -- Filter the results to only include orderID 1006
+ORDER BY 
+    od.partID;  -- Order the results by partID to group the items in each order (this can be adjusted depending on your needs)
 
 
 # for foreign keys: 
