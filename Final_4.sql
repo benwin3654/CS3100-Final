@@ -127,6 +127,17 @@ CREATE TABLE price(
     CONSTRAINT `partID122` FOREIGN KEY (`partID`) REFERENCES `products`(`partID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE address(
+	`addressID` INT AUTO_INCREMENT PRIMARY KEY,
+    `address` VARCHAR(30),
+    `city` VARCHAR(15),
+    `zipcode` VARCHAR(10)
+)AUTO_INCREMENT = 1000
+ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE contacts
+ADD COLUMN addressID INT,
+ADD CONSTRAINT `FK_contacts_address` FOREIGN KEY (`addressID`) REFERENCES `address`(`addressID`);
 
 -- ALL EMPLOYEES ENTERED		
 INSERT INTO employees
